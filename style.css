@@ -1,106 +1,89 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    /* Custom font */
+    font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(135deg, #f0f0f0, #c8e0e0);
-    /* Gentle gradient */
     margin: 0;
     padding: 0;
 }
 
 .container {
     background-color: #fff;
-    padding: 30px 40px;
-    /* More padding */
+    padding: 20px 25px;
     border-radius: 20px;
-    /* Softer corners */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    /* More pronounced shadow */
     text-align: center;
-    max-width: 800px;
-    /* Limit container width */
-    width: 90%;
-    /* Responsive width */
+    max-width: 450px;
+    width: 95%;
 }
 
 h1 {
     color: #2a7575;
-    /* Teal color */
-    margin-bottom: 30px;
-    /* More space below title */
-    font-size: 2.5rem;
-    /* Larger font size */
+    margin-bottom: 25px;
+    font-size: 2rem;
 }
 
 #controls {
-    margin-bottom: 30px;
-    /* More space below controls */
+    margin-bottom: 25px;
     display: grid;
-    /* Use grid layout */
-    grid-template-columns: 1fr 1fr;
-    /* Two columns */
-    gap: 20px;
-    /* Space between controls */
+    grid-template-columns: auto auto;
+    gap: 15px;
     align-items: center;
-    /* Vertically align items */
+    justify-content: center;
 }
 
 label {
     font-weight: bold;
     color: #333;
+    text-align: right;
 }
 
 input[type="number"],
 select {
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
-    width: 100%;
-    /* Full width in its grid cell */
+    font-size: 0.9rem;
+    width: 70px;
     box-sizing: border-box;
-    /* Include padding and border in width */
 }
 
 #roll-button {
-    padding: 12px 25px;
-    /* Larger button */
+    padding: 10px 20px;
     background-color: #2a7575;
-    /* Teal color */
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    grid-column: span 2;
-    /* Span two columns */
+    width: auto;
+    white-space: nowrap;
+    grid-column: 1/3;
+    justify-self: center;
 }
 
 #roll-button:hover {
     background-color: #235e5e;
-    /* Darker teal on hover */
 }
 
 #dice-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .die {
-    width: 80px;
-    height: 80px;
-    margin: 10px;
+    width: 65px;
+    height: 65px;
+    margin: 8px;
     border-radius: 5px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     transition: transform 0.3s ease;
-    /* Smooth transition for animation */
 }
 
 .die:hover {
@@ -109,31 +92,76 @@ select {
 }
 
 #result {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: #2a7575;
-    /* Teal color */
     margin-top: 20px;
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     .container {
-        padding: 20px;
+        padding: 15px;
+        margin: 0 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
     }
 
     #controls {
         grid-template-columns: 1fr;
-        /* Single column on small screens */
+        grid-template-rows: auto auto auto auto auto;
+        /* Explicit rows for vertical stacking */
+        gap: 10px;
+        margin-bottom: 20px;
+        align-items: center;
     }
 
-    .die {
-        width: 60px;
-        height: 60px;
+    #controls>label[for="dice-type"] {
+        grid-row: 3;
+    }
+
+    #controls>select#dice-type {
+        grid-row: 4;
     }
 
     #roll-button {
+        grid-row: 5;
         grid-column: 1;
-        /* Reset grid column for single column layout */
+        padding: 8px 15px;
+        font-size: 1rem;
+        width: auto;
+        justify-self: center;
+    }
+
+    .die {
+        width: 55px;
+        height: 55px;
+        margin: 5px;
+    }
+
+    #result {
+        font-size: 1.2rem;
+        margin-top: 15px;
+    }
+
+    label {
+        text-align: center;
+    }
+
+    input[type="number"],
+    select {
+        width: auto;
+    }
+
+    #controls>input,
+    #controls>select {
+        margin: 0 auto;
+    }
+
+    #controls>label {
+        justify-self: center;
     }
 }
