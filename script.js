@@ -4,7 +4,6 @@ const rollButton = document.getElementById('roll-button');
 const diceContainer = document.getElementById('dice-container');
 const resultDiv = document.getElementById('result');
 
-// Update with your actual sound file
 const rollSound = new Audio('sounds/roll.mp3');
 
 rollButton.addEventListener('click', () => {
@@ -53,3 +52,8 @@ function createDieElement(result, index, diceType) {
         iterations: 1
     });
 }
+
+// Trigger the roll button click event on page load
+document.addEventListener('DOMContentLoaded', () => {
+    rollButton.click();
+});
