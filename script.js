@@ -1,12 +1,15 @@
 const numDiceInput = document.getElementById('num-dice');
+const diceTypeSelect = document.getElementById('dice-type');
 const rollButton = document.getElementById('roll-button');
 const diceContainer = document.getElementById('dice-container');
 const resultDiv = document.getElementById('result');
 
-const rollSound = new Audio('sounds/roll.mp3'); // Update with your sound file
+// Update with your actual sound file
+const rollSound = new Audio('sounds/roll.mp3');
 
 rollButton.addEventListener('click', () => {
     const numDice = parseInt(numDiceInput.value);
+    const diceType = parseInt(diceTypeSelect.value);
 
     // Clear previous dice
     diceContainer.innerHTML = '';
@@ -18,24 +21,24 @@ rollButton.addEventListener('click', () => {
 
     let total = 0;
     for (let i = 0; i < numDice; i++) {
-        const rollResult = rollDice();
+        const rollResult = rollDice(diceType);
         total += rollResult;
-        createDieElement(rollResult);
+        createDieElement(rollResult, i, diceType);
     }
 
     resultDiv.textContent = `Total: ${total}`;
 });
 
-function rollDice() {
-    return Math.floor(Math.random() * 6) + 1;
+function rollDice(sides) {
+    return Math.floor(Math.random() * sides) + 1;
 }
 
-function createDieElement(result) {
+function createDieElement(result, index, diceType) {
     const die = document.createElement('div');
     die.classList.add('die');
 
-    // Set background image based on the result
-    die.style.backgroundImage = `url('images/d6-${result}.png')`;
+    // Set background image based on the result and dice type
+    die.style.backgroundImage = `url('images/d${diceType}-${result}.png')`;
 
     diceContainer.appendChild(die);
 
